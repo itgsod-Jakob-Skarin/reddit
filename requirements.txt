@@ -1,1 +1,2 @@
 keyring==5.3
+pyYAML==3.11

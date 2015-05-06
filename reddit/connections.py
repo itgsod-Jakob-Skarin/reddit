@@ -30,7 +30,7 @@ class Client():
 
     def login(self, reddit_id):
 
-        passwd = keyring.get_password(app_name, reddit_id)
+        passwd = "1234word"   #keyring.get_password(app_name, reddit_id)
 
         if not passwd:
             passwd = getpass.getpass()
@@ -63,7 +63,7 @@ class Client():
         headers = {"User-Agent": config['reddit_boot']}
         headers['Authorization'] = 'bearer %s' % self.access_token
 
-        response = requests.get(uri,headers=headers)
+        response = requests.get(uri, headers=headers)
 
 
         print response.headers
