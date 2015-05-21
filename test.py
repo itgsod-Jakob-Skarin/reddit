@@ -9,27 +9,14 @@ lol = Subreddit("leagueoflegends", "")
 
 lol_Comments = Comments("leagueoflegends", "comments")
 
-lol_post_authors = Subreddit("leagueoflegends", "0")
+lol_post_authors = Subreddit("leagueoflegends", "author")
 
-print lol_post_authors.author()
+#print lol.posts(2)
 
-#print lol.new()
-
-#print lol.hot()
-
-#print lol_Comments.comment()
-
-#jakob.me()
-#Subreddit.("leagueoflegends")
-
-
-
-
-# python = Subreddit("python")
-#
-# python.hot()
-
-
+for p in lol.posts():
+    print p
+    #print "Post nr " + str(p.nr) + "\nTitle: \n" + p.title + "\nAuthor: \n" + p.author
+    #print p.author
 
 
 
