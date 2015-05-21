@@ -17,8 +17,6 @@ class Subreddit(object):
 
 
     def hot(self):
-        #pprint(reddit.client.request(url_hot.format(subreddit=self.subreddit)))
-        #return reddit.client.request(url_hot.format(subreddit=self.subreddit))
         res = reddit.client.request(url_hot.format(subreddit=self.subreddit))
 
         hot_posts = []
@@ -43,28 +41,20 @@ class Subreddit(object):
             p['nr'] = i
             _posts.append(Post(p))
 
-        #     authors.append(p['data']['author'])
-        #
-        # for p in res['data']['children']:
-        #     titles.append(p['data']['title'])
-
-        #return "Title: \n" + titles[postnumbers] + " \n" + "Author: \n" + authors[postnumbers]
-
         return _posts
 
     def author(self):
-
-        #return res
 
         class Post(object):
 
             def __init__(self, post):
                 self.post = post
 
+
 class Post(object):
     pass
 
-    def __init__(self,data):
+    def __init__(self ,data):
         self.nr = data['nr']
         self.link = data['data']['url']
 
@@ -74,6 +64,7 @@ class Post(object):
     def __str__(self):
         return "Post nr: " + str(self.nr) + "\nTitle: " + self.title + "\nAuthor: " + self.author + "\nlink: " + self.link + "\n"
 
+
 class Comments(object):
 
     def __init__(self, subreddit, comments):
@@ -82,9 +73,3 @@ class Comments(object):
 
     def comment(self):
         pprint(reddit.client.request(url.format(subreddit=self.subreddit, comments=self.comments)))
-
-
-
-#
-
-
