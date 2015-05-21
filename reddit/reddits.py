@@ -13,7 +13,7 @@ class Subreddit(object):
     def __init__(self, subreddit, author):
         self.subreddit = subreddit
         #self._author = author
-        self._posts =[]
+        self._posts = []
 
 
     def hot(self):
