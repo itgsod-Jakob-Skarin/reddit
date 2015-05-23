@@ -16,8 +16,8 @@ class Client():
 
     def __init__(self):
 
-        self.client_id = keyring.get_password(app_name,'client_id')
-        self.client_secret = keyring.get_password(app_name,'client_secret')
+        self.client_id = keyring.get_password(app_name, 'client_id')
+        self.client_secret = keyring.get_password(app_name, 'client_secret')
 
         if not (self.client_id or self.client_secret):
                 self.client_id = getpass.getpass("Your reddit bot client id: ")
@@ -38,13 +38,10 @@ class Client():
             # save it for next time
             keyring.set_password(app_name, reddit_id, passwd)
 
-
         headers = {"User-Agent": config['reddit_boot']}
 
-
-
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
-        data = {'grant_type': 'password' ,'username': reddit_id, 'password': passwd}
+        data = {'grant_type': 'password', 'username': reddit_id, 'password': passwd}
 
         response = requests.post(token_url,data=data,auth=auth,headers=headers)
 
@@ -52,7 +49,7 @@ class Client():
             pprint(response.json())
             sys.exit()
 
-        json_data= response.json()
+        json_data = response.json()
 
         self.access_token = json_data['access_token']
 
@@ -64,7 +61,6 @@ class Client():
         headers['Authorization'] = 'bearer %s' % self.access_token
 
         response = requests.get(uri, headers=headers)
-
 
         print response.headers
 
